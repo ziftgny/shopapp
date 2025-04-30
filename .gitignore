@@ -1,0 +1,27 @@
+# Maven
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+**/logs/
+*.log
+*.class
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Environment / config files
+application.yml
+.env
+
+# GitHub-specific
+*.orig
+
+# Test reports
+/test-output/

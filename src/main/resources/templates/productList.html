@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Ürün Listesi</title>
+</head>
+<body>
+<h1>Ürünler</h1>
+<ul>
+    <li th:each="product : ${products}">
+        <img th:src="${product.imageUrl}" width="100"/>
+        <h3 th:text="${product.name}">Ürün Adı</h3>
+        <p th:text="${product.description}">Açıklama</p>
+        <p>Fiyat: <span th:text="${product.price}">0</span> ₺</p>
+    </li>
+</ul>
+</body>
+</html>
