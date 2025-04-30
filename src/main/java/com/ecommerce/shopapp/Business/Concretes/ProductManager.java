@@ -19,4 +19,9 @@ public class ProductManager implements ProductService {
     public List<Product> getAll() {
         return productRepository.findAll();
     }
+
+    @Override
+    public void add(Product product) {
+        productRepository.save(product);
+    }
 }

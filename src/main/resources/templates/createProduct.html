@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Ürün Ekle</title>
+</head>
+<body>
+<h1>Yeni Ürün Ekle</h1>
+<form th:action="@{/newcreate}" th:object="${product}" method="post">
+  <label>Ürün Adı:</label>
+  <input type="text" th:field="*{name}" /><br/>
+
+  <label>Açıklama:</label>
+  <input type="text" th:field="*{description}" /><br/>
+
+  <label>Fiyat:</label>
+  <input type="number" step="0.01" th:field="*{price}" /><br/>
+
+  <label>Görsel URL:</label>
+  <input type="text" th:field="*{imageUrl}" /><br/>
+
+  <button type="submit">Kaydet</button>
+</form>
+</body>
+</html>
