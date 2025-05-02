@@ -1,29 +1,12 @@
-package com.ecommerce.shopapp.Entities.Concretes;
+package com.ecommerce.shopapp.DTOs.Requests;
 
-import com.ecommerce.shopapp.Core.Entities.BaseEntity;
-import jakarta.persistence.*;
-
-@Entity
-public class Product extends BaseEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class ProductRequestDTO {
     private String name;
     private String description;
     private double price;
     private String imageUrl;
 
-    public Product() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public ProductRequestDTO() {
     }
 
     public String getName() {
@@ -58,3 +41,4 @@ public class Product extends BaseEntity {
         this.imageUrl = imageUrl;
     }
 }
+

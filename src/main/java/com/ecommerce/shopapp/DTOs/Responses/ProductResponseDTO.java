@@ -1,21 +1,13 @@
-package com.ecommerce.shopapp.Entities.Concretes;
+package com.ecommerce.shopapp.DTOs.Responses;
 
-import com.ecommerce.shopapp.Core.Entities.BaseEntity;
-import jakarta.persistence.*;
-
-@Entity
-public class Product extends BaseEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProductResponseDTO {
     private Long id;
-
     private String name;
     private String description;
     private double price;
     private String imageUrl;
-
-    public Product() {
+    
+    public ProductResponseDTO() {
     }
 
     public Long getId() {
