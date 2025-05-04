@@ -30,7 +30,7 @@ public class ProductManager implements ProductService {
     }
 
     @Override
-    public Result add(ProductRequestDTO productDto) {
+    public Result create(ProductRequestDTO productDto) {
         Product product = productMapper.toEntity(productDto);
         productRepository.save(product);
         return new SuccessResult("Ürün başarıyla eklendi.");

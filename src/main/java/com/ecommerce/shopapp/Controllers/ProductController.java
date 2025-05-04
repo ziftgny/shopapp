@@ -38,7 +38,7 @@ public class ProductController {
 
     @PostMapping("/create-product")
     public String createProduct(@ModelAttribute ProductRequestDTO productRequestDTO, Model model) {
-        Result result = productService.add(productRequestDTO);
+        Result result = productService.create(productRequestDTO);
         return "redirect:/create-product-page";
     }
 

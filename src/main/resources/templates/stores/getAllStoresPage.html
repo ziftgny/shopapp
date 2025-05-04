@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- [Head] start -->
+<head th:replace="~{layouts/head :: head(pageTitle='Dashboard')}"></head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
+
+<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+  <div class="loader-track">
+    <div class="loader-fill"></div>
+  </div>
+</div>
+<!-- [ Pre-loader ] End -->
+<!-- [ Sidebar Menu ] start -->
+<nav th:replace="~{layouts/nav :: nav}"></nav>
+<!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
+<header th:replace="~{layouts/header :: header}"></header>
+<!-- [ Header ] end -->
+
+
+
+<!-- [ Main Content ] start -->
+<div class="pc-container">
+  <div class="pc-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
+              <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
+              <li class="breadcrumb-item" aria-current="page">Home</li>
+            </ul>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+
+    <!-- [ Main Content ] start -->
+    <div class="row">
+      <div class="container px-5">
+        <h2 class="mb-4 text-center">Mağazalarım</h2>
+
+        <div th:if="${#lists.isEmpty(stores)}" class="alert alert-warning text-center">
+          Henüz bir mağazanız yok. Hadi bir tane oluşturun!
+        </div>
+
+        <div class="row" th:if="${!#lists.isEmpty(stores)}">
+          <div class="col-md-4 mb-4" th:each="store : ${stores}">
+            <div class="card h-100 shadow position-relative">
+              <!-- Banner -->
+              <img th:src="@{/{path}(path=${store.getBannerImageUrl()})}"
+                   class="card-img-top" alt="Mağaza Banner"
+                   style="height: 200px; object-fit: cover;">
+
+              <!-- Profile Image (Overlapping) -->
+              <div style="position: absolute; top: 130px; left: 50%; transform: translateX(-50%); z-index: 10;">
+                <img th:src="@{/{path}(path=${store.getShopImageUrl()})}"
+                     alt="Profil Fotoğrafı"
+                     class="rounded-circle shadow"
+                     style="width: 100px; height: 100px; object-fit: cover; border: 3px solid white;">
+              </div>
+
+              <div class="card-body text-center mt-5 pt-4">
+                <h5 class="card-title" th:text="${store.getStoreName()}">Mağaza Adı</h5>
+                <p class="card-text text-muted" th:text="${store.getDescription()}">Açıklama</p>
+              </div>
+
+              <div class="card-footer d-flex justify-content-between">
+                <form th:action="@{/stores/update-store-page/{id}(id=${store.getId()})}" method="get">
+                  <button type="submit" class="btn btn-sm btn-outline-primary">Düzenle</button>
+                </form>
+                <form th:action="@{/stores/delete/{id}(id=${store.getId()})}" method="post">
+                  <button type="submit" class="btn btn-sm btn-outline-danger">Sil</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- [ Main Content ] end -->
+<footer th:replace="~{layouts/footer :: footer}"></footer>
+
+<!-- [Page Specific JS] start -->
+<script src="../assets/js/plugins/apexcharts.min.js"></script>
+<script src="../assets/js/pages/dashboard-default.js"></script>
+<!-- [Page Specific JS] end -->
+<!-- Required Js -->
+<div th:replace="~{layouts/scripts :: scripts}"></div>
+
+
+</body>
+<!-- [Body] end -->
+
+</html>

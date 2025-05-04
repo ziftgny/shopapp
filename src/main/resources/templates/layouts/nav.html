@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layouts/head :: head(pageTitle='Dashboard')}"></head>
+<nav class="pc-sidebar" th:fragment="nav">
+    <div class="navbar-wrapper">
+        <div class="m-header">
+            <a th:href="@{/}" class="b-brand text-primary">
+                <!-- ========   Change your logo from here   ============ -->
+                <h2>ShopApp</h2>
+            </a>
+        </div>
+        <div class="navbar-content">
+            <ul class="pc-navbar">
+
+
+
+                <li>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Stores
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                                            The current link item
+                                        </a>
+                                        <a th:href="@{/stores/show-stores-page}" class="list-group-item list-group-item-action">Show Stores</a>
+                                        <a th:href="@{/stores/create-store-page}" class="list-group-item list-group-item-action">Create A Store</a>
+                                        <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                                        <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Products
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Accordion Item #3
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+
+
+
+
+                <li class="pc-item pc-caption">
+                    <label data-i18n="Widget">UI Components</label>
+                    <i class="pc-micon">
+                        <svg class="pc-icon">
+                            <use xlink:href="#line-chart"></use>
+                        </svg>
+                    </i>
+                </li>
+                <li class="pc-item">
+                    <a href="../elements/bc_typography.html" class="pc-link">
+            <span class="pc-micon">
+              <svg class="pc-icon">
+                <use xlink:href="#font-size"></use>
+              </svg>
+            </span>
+                        <span class="pc-mtext">Typography</span>
+                    </a>
+                </li>
+                <li class="pc-item">
+                    <a href="../elements/bc_color.html" class="pc-link">
+            <span class="pc-micon">
+              <svg class="pc-icon">
+                <use xlink:href="#bg-colors"></use>
+              </svg>
+            </span>
+                        <span class="pc-mtext">Color</span>
+                    </a>
+                </li>
+                <li class="pc-item">
+                    <a href="../elements/icon-tabler.html" class="pc-link">
+            <span class="pc-micon">
+              <svg class="pc-icon">
+                <use xlink:href="#highlight"></use>
+              </svg>
+            </span>
+                        <span class="pc-mtext">Icons</span>
+                    </a>
+                </li>
+                <li class="pc-item pc-caption">
+                    <label data-i18n="Widget">Pages</label>
+                    <i class="pc-micon">
+                        <svg class="pc-icon">
+                            <use xlink:href="#line-chart"></use>
+                        </svg>
+                    </i>
+                </li>
+                <li class="pc-item">
+                    <a href="../pages/login.html" class="pc-link">
+            <span class="pc-micon">
+              <svg class="pc-icon">
+                <use xlink:href="#lock"></use>
+              </svg>
+            </span>
+                        <span class="pc-mtext">Login</span>
+                    </a>
+                </li>
+                <li class="pc-item">
+                    <a href="../pages/register.html" class="pc-link">
+            <span class="pc-micon">
+              <svg class="pc-icon">
+                <use xlink:href="#user-add"></use>
+              </svg>
+            </span>
+                        <span class="pc-mtext">Register</span>
+                    </a>
+                </li>
+                <li class="pc-item pc-caption">
+                    <label data-i18n="Widget">Other</label>
+                    <i class="pc-micon">
+                        <svg class="pc-icon">
+                            <use xlink:href="#line-chart"></use>
+                        </svg>
+                    </i>
+                </li>
+
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link">
+            <span class="pc-micon">
+              <svg class="pc-icon">
+                <use xlink:href="#swap"></use>
+              </svg>
+            </span>
+                        <span class="pc-mtext" data-i18n="Menu levels">Menu levels</span>
+                        <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                    </a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="#!" data-i18n="Level 2.1">Level 2.1</a></li>
+                        <li class="pc-item pc-hasmenu">
+                            <a href="#!" class="pc-link">
+                                <span data-i18n="Level 2.2">Level 2.2</span>
+                                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                            </a>
+                            <ul class="pc-submenu">
+                                <li class="pc-item"><a class="pc-link" href="#!" data-i18n="Level 3.1">Level 3.1</a></li>
+                                <li class="pc-item"><a class="pc-link" href="#!" data-i18n="Level 3.2">Level 3.2</a></li>
+                                <li class="pc-item pc-hasmenu">
+                                    <a href="#!" class="pc-link">
+                                        <span data-i18n="Level 3.3">Level 3.3</span>
+                                        <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                                    </a>
+                                    <ul class="pc-submenu">
+                                        <li class="pc-item"><a class="pc-link" href="#!" data-i18n="Level 4.1">Level 4.1</a></li>
+                                        <li class="pc-item"><a class="pc-link" href="#!" data-i18n="Level 4.2">Level 4.2</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="pc-item pc-hasmenu">
+                            <a href="#!" class="pc-link">
+                                <span data-i18n="Level 2.2">Level 2.3</span>
+                                <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                            </a>
+                            <ul class="pc-submenu">
+                                <li class="pc-item"><a class="pc-link" href="#!" data-i18n="Level 3.1">Level 3.1</a></li>
+                                <li class="pc-item"><a class="pc-link" href="#!" data-i18n="Level 3.2">Level 3.2</a></li>
+                                <li class="pc-item pc-hasmenu">
+                                    <a href="#!" class="pc-link">
+                                        <span data-i18n="Level 3.3">Level 3.3</span>
+                                        <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
+                                    </a>
+                                    <ul class="pc-submenu">
+                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.1</a></li>
+                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.2</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="pc-item">
+                    <a href="../other/sample-page.html" class="pc-link">
+            <span class="pc-micon">
+              <svg class="pc-icon">
+                <use xlink:href="#chrome"></use>
+              </svg>
+            </span>
+                        <span class="pc-mtext" data-i18n="Sample Page">Sample page</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+</html>

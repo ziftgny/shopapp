@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface ProductService {
     DataResult<List<ProductResponseDTO>> getAll();
-    Result add(ProductRequestDTO productRequestDTO);
+    Result create(ProductRequestDTO productRequestDTO);
     DataResult<ProductResponseDTO> getById(Long id);
     Result update(Long id, ProductRequestDTO dto);
     Result delete(Long id);

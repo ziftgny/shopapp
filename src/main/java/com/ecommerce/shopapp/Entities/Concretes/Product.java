@@ -4,16 +4,27 @@ import com.ecommerce.shopapp.Core.Entities.BaseEntity;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "products")
 public class Product extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String description;
     private double price;
     private String imageUrl;
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 
     public Product() {
     }
