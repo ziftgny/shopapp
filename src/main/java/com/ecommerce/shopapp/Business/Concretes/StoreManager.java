@@ -79,6 +79,9 @@ public class StoreManager implements StoreService {
         if (dto.getBannerImageUrl() != null) {
             store.setBannerImageUrl(dto.getBannerImageUrl());
         }
+        if(dto.getShopImageUrl() != null){
+            store.setShopImageUrl(dto.getShopImageUrl());
+        }
         if (dto.getStoreName() != null) {
             store.setStoreName(dto.getStoreName());
         }

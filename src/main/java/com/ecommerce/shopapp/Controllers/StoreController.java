@@ -46,6 +46,10 @@ public class StoreController {
         // Sadece bu kullanıcıya ait mağazaları getir
         DataResult<List<StoreResponseDTO>> result = storeService.getAllStoresByOwnerId(owner.getId());
 
+        if (!result.isSuccess()) {
+            model.addAttribute("error", result.getMessage()); // Hata mesajını göster
+            return "stores/getAllStoresPage";
+        }
         model.addAttribute("stores", result.getData());
         return "stores/getAllStoresPage"; // templates/store/list.html
     }
