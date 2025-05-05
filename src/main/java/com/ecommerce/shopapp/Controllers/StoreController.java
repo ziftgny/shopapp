@@ -10,6 +10,7 @@ import com.ecommerce.shopapp.DataAccess.Abstracts.UserRepository;
 import com.ecommerce.shopapp.DTOs.Requests.StoreRequestDTO;
 import com.ecommerce.shopapp.DTOs.Responses.StoreResponseDTO;
 import com.ecommerce.shopapp.Entities.Concretes.User;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -35,8 +36,9 @@ public class StoreController {
     }
 
     // ✅ Tüm mağazaları listele
-    @GetMapping("show-stores-page")
-    public String getAllStores(Model model) {
+    @GetMapping("/show-stores-page")
+    public String getAllStores(Model model, HttpServletRequest request) {
+        model.addAttribute("currentURI", request.getRequestURI()); // eklendi
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
         model.addAttribute("user", userService.getUserByEmail(auth.getName()));
@@ -56,7 +58,8 @@ public class StoreController {
 
     // ✅ Yeni mağaza formu
     @GetMapping("/create-store-page")
-    public String createStorePage(Model model) {
+    public String createStorePage(Model model, HttpServletRequest request) {
+        model.addAttribute("currentURI", request.getRequestURI()); // eklendi
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("user", userService.getUserByEmail(auth.getName()));
         model.addAttribute("store", new StoreRequestDTO());

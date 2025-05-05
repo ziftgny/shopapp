@@ -7,6 +7,7 @@ import com.ecommerce.shopapp.DTOs.Requests.ProductRequestDTO;
 import com.ecommerce.shopapp.DTOs.Responses.ProductResponseDTO;
 import com.ecommerce.shopapp.DataAccess.Abstracts.ProductRepository;
 import com.ecommerce.shopapp.Entities.Concretes.Product;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,13 +26,15 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String getAllProducts(Model model) {
+    public String getAllProducts(Model model, HttpServletRequest request) {
+        model.addAttribute("currentURI", request.getRequestURI());
         model.addAttribute("products", productService.getAll().getData());
         return "productList";
     }
 
     @GetMapping("/create-product-page")
-    public String CreateProductPage(Model model) {
+    public String CreateProductPage(Model model, HttpServletRequest request) {
+        model.addAttribute("currentURI", request.getRequestURI());
         model.addAttribute("product", new ProductRequestDTO());
         return "createProductPage";
     }
