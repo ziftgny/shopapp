@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="~{layouts/head :: head(pageTitle='Dashboard')}"></head>
 <div th:fragment="scripts">
     <script th:src="@{/assets/js/plugins/popper.min.js}"></script>
@@ -29,6 +29,27 @@
 
     <script>
         font_change('Public-Sans');
+    </script>
+
+    <!-- Toast mesajı -->
+    <script th:inline="javascript">
+        const message = [[${message}]];
+        const success = [[${success}]];
+
+        if (message && message !== 'null') {
+            const toast = document.getElementById('toastMessage');
+            const toastText = document.getElementById('toastText');
+
+            toastText.textContent = message;
+            toast.classList.remove('bg-success', 'bg-danger');
+            toast.classList.add(success ? 'bg-success' : 'bg-danger');
+
+            toast.style.display = 'block';
+
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 2500);
+        }
     </script>
 
 </div>

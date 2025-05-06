@@ -28,19 +28,22 @@
     <div class="page-header">
       <div class="page-block">
         <div class="row align-items-center">
-          <div class="col-md-12">
+
+          <div class="col-md-12 mb-3">
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
               <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-              <li class="breadcrumb-item" aria-current="page">Home</li>
+              <!--<li class="breadcrumb-item" aria-current="page">Home</li>-->
             </ul>
           </div>
+
           <div class="col-md-12">
             <div class="page-header-title">
               <h2 class="mb-0">Welcome <label th:text="${user.getData().getFullName()}"></label></h2>
             </div>
           </div>
         </div>
+
       </div>
     </div>
     <!-- [ breadcrumb ] end -->

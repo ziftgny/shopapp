@@ -6,7 +6,8 @@ public class ProductResponseDTO {
     private String description;
     private double price;
     private String imageUrl;
-    
+    private StoreResponseDTO store; // Product dto'ya store dto'sunu ekledik(ürünün ait olduğu mağaza bilgisine erişmek için)
+
     public ProductResponseDTO() {
     }
 
@@ -48,5 +49,13 @@ public class ProductResponseDTO {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public StoreResponseDTO getStore() {
+        return store;
+    }
+
+    public void setStore(StoreResponseDTO store) {
+        this.store = store;
     }
 }

@@ -1,0 +1,10 @@
+.btnSize {
+  min-width: 100px;
+  padding: 8px 12px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.card-bottom-font {
+ font-weight:500;
+}

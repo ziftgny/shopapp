@@ -28,11 +28,11 @@
     <div class="page-header">
       <div class="page-block">
         <div class="row align-items-center">
-          <div class="col-md-12">
+          <div class="col-md-12 mb-3">
             <ul class="breadcrumb">
               <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-              <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-              <li class="breadcrumb-item" aria-current="page">Home</li>
+              <li class="breadcrumb-item"><a href="javascript: void(0)">Stores</a></li>
+              <li class="breadcrumb-item" aria-current="page">All Stores</li>
             </ul>
           </div>
           </div>
@@ -67,16 +67,16 @@
               </div>
 
               <div class="card-body text-center mt-5 pt-4">
-                <h5 class="card-title" th:text="${store.getStoreName()}">Mağaza Adı</h5>
-                <p class="card-text text-muted" th:text="${store.getDescription()}">Açıklama</p>
+                <h5 class="card-title" th:text="${store.getStoreName()}">Store Name</h5>
+                <p class="card-text text-muted" th:text="${store.getDescription()}">Description</p>
               </div>
 
               <div class="card-footer d-flex justify-content-between">
                 <form th:action="@{/stores/update-store-page/{id}(id=${store.getId()})}" method="get">
-                  <button type="submit" class="btn btn-sm btn-outline-primary">Düzenle</button>
+                  <button type="submit" class="btn btn-sm btn-outline-primary btnSize">Update</button>
                 </form>
                 <form th:action="@{/stores/delete/{id}(id=${store.getId()})}" method="post">
-                  <button type="submit" class="btn btn-sm btn-outline-danger">Sil</button>
+                  <button type="submit" class="btn btn-sm btn-outline-danger btnSize">Delete</button>
                 </form>
               </div>
             </div>
