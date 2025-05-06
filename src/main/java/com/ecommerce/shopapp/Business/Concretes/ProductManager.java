@@ -31,30 +31,30 @@ public class ProductManager implements ProductService {
     public DataResult<List<ProductResponseDTO>> getAll() {
         List<Product> products = productRepository.findAll();
         List<ProductResponseDTO> dtoList = productMapper.toDtoList(products);
-        return new SuccessDataResult<>(dtoList, "Ürünler başarıyla listelendi.");
+        return new SuccessDataResult<>(dtoList, "Products Listed Successfully");
     }
 
     @Override
     public Result create(ProductRequestDTO productDto) {
         Product product = productMapper.toEntity(productDto);
         productRepository.save(product);
-        return new SuccessResult("Ürün başarıyla eklendi.");
+        return new SuccessResult("Product Added Successfully");
     }
 
     @Override
     public DataResult<ProductResponseDTO> getById(Long id) {
         Product product = productRepository.findById(id).orElse(null);
         if (product == null) {
-            return new ErrorDataResult<>("Ürün bulunamadı.");
+            return new ErrorDataResult<>("Product Not Found");
         }
-        return new SuccessDataResult<>(productMapper.toDto(product), "Ürün getirildi.");
+        return new SuccessDataResult<>(productMapper.toDto(product), "Product Found");
     }
 
     @Override
     public Result update(Long id, ProductRequestDTO dto) {
         Product existingProduct = productRepository.findById(id).orElse(null);
         if (existingProduct == null) {
-            return new ErrorResult("Güncellenecek ürün bulunamadı.");
+            return new ErrorResult("Product Not Found");
         }
 
         // DTO'dan gelen verilerle güncelle
@@ -64,22 +64,22 @@ public class ProductManager implements ProductService {
         existingProduct.setImageUrl(dto.getImageUrl());
 
         productRepository.save(existingProduct);
-        return new SuccessResult("Ürün başarıyla güncellendi.");
+        return new SuccessResult("Product Updated Successfully");
     }
 
     @Override
     public Result delete(Long id) {
         if (!productRepository.existsById(id)) {
-            return new ErrorResult("Silinecek ürün bulunamadı.");
+            return new ErrorResult("Product Not Found");
         }
         productRepository.deleteById(id);
-        return new SuccessResult("Ürün başarıyla silindi.");
+        return new SuccessResult("Product Deleted Successfully");
     }
 
     @Override
     public void createWithStore(ProductRequestDTO dto, Long storeId) {
         Store store = storeRepository.findById(storeId)
-                .orElseThrow(() -> new RuntimeException("Store not found"));
+                .orElseThrow(() -> new RuntimeException("Store Not Found"));
 
         Product product = productMapper.toEntity(dto);
         product.setStore(store);

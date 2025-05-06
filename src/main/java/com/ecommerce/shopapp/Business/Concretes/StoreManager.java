@@ -47,7 +47,7 @@ public class StoreManager implements StoreService {
     public Result createStore(StoreRequestDTO dto) {
         UserRequestDTO ownerDTO = userService.getUserById(dto.getOwnerId()).getData();
         if (ownerDTO == null) {
-            return new ErrorResult("Owner not found");
+            return new ErrorResult("Owner Not Found");
         }
 
         Store store = storeMapper.toEntity(dto);
@@ -55,14 +55,14 @@ public class StoreManager implements StoreService {
         store.setOwner(owner);
         storeRepository.save(store);
 
-        return new SuccessResult("Store added successfully");
+        return new SuccessResult("Store Added Successfully");
     }
 
     @Override
     public DataResult<StoreResponseDTO> getStoreById(Long id) {
         Store store = storeRepository.findById(id).orElse(null);
         if (store == null) {
-            return new ErrorDataResult<>("Store not found");
+            return new ErrorDataResult<>("Store Not Found");
         }
         return new SuccessDataResult<>(storeMapper.toDto(store));
     }
@@ -70,11 +70,11 @@ public class StoreManager implements StoreService {
     @Override
     public Result updateStore(Long id, StoreRequestDTO dto) {
         Store store = storeRepository.findById(id).orElse(null);
-        if (!(store.getOwner().getId().equals(dto.getOwnerId()))) {
-            return new ErrorResult("Owner does not belong to this store");
-        }
         if (store == null) {
-            return new ErrorResult("Store not found");
+            return new ErrorResult("Store Not Found");
+        }
+        if (!(store.getOwner().getId().equals(dto.getOwnerId()))) {
+            return new ErrorResult("Owner Does Not Belong To This Store");
         }
         if (dto.getBannerImageUrl() != null) {
             store.setBannerImageUrl(dto.getBannerImageUrl());
@@ -89,17 +89,17 @@ public class StoreManager implements StoreService {
         store.setDescription(dto.getDescription());
         storeRepository.save(store);
 
-        return new SuccessResult("Store updated successfully");
+        return new SuccessResult("Store Updated Successfully");
     }
 
     @Override
     public Result deleteStore(Long id) {
         if (!storeRepository.existsById(id)) {
-            return new ErrorResult("Store not found");
+            return new ErrorResult("Store Not Found");
         }
 
         storeRepository.deleteById(id);
-        return new SuccessResult("Store deleted successfully");
+        return new SuccessResult("Store Deleted Successfully");
     }
 
 }

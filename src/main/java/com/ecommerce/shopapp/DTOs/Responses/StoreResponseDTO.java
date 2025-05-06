@@ -1,5 +1,7 @@
 package com.ecommerce.shopapp.DTOs.Responses;
 
+import java.time.LocalDateTime;
+
 public class StoreResponseDTO {
 
     private Long id;
@@ -8,6 +10,7 @@ public class StoreResponseDTO {
     private String bannerImageUrl;
     private String shopImageUrl;
     private String ownerEmail;
+    private LocalDateTime createdAt;
 
     public StoreResponseDTO() {
     }
@@ -68,6 +71,14 @@ public class StoreResponseDTO {
 
     public void setOwnerEmail(String ownerEmail) {
         this.ownerEmail = ownerEmail;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }
 

@@ -13,4 +13,12 @@ public abstract class BaseEntity {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
 }

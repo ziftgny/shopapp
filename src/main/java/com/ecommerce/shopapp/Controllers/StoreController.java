@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -124,8 +125,12 @@ public class StoreController {
 
     // ✅ Sil
     @PostMapping("/delete/{id}")
-    public String deleteStore(@PathVariable Long id) {
-        storeService.deleteStore(id);
+    public String deleteStore(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+        Result result = storeService.deleteStore(id);
+
+        redirectAttributes.addFlashAttribute("message", result.getMessage());
+        redirectAttributes.addFlashAttribute("success", result.isSuccess());
+
         return "redirect:/stores/show-stores-page";
     }
 }
