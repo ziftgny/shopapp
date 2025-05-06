@@ -36,7 +36,6 @@ public class StoreManager implements StoreService {
         this.userMapper = userMapper;
     }
 
-
     @Override
     public DataResult<List<StoreResponseDTO>> getAllStoresByOwnerId(Long ownerId) {
         List<Store> stores = storeRepository.findByOwnerId(ownerId);
