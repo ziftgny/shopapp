@@ -117,7 +117,7 @@ public class StoreController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserRequestDTO user = userService.getUserByEmail(auth.getName()).getData();
         Long ownerid = user.getId();
-        StoreRequestDTO dto = new StoreRequestDTO(storeName, description, bannerUrl, shopUrl,ownerid);
+        StoreRequestDTO dto = new StoreRequestDTO(storeName, description, bannerUrl, shopUrl, ownerid);
         storeService.updateStore(id, dto);
 
         return "redirect:/stores/show-stores-page";

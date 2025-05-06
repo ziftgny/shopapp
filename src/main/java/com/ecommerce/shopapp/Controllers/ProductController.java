@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -93,21 +94,37 @@ public class ProductController {
 
     @GetMapping("/update-product-page/{id}")
     public String updateProductPage(@PathVariable Long id, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String email = auth.getName();
+        DataResult<UserRequestDTO> user = userService.getUserByEmail(email);
+        DataResult<List<StoreResponseDTO>> userStores = storeService.getAllStoresByOwnerId(user.getData().getId());
         DataResult<ProductResponseDTO> result = productService.getById(id);
         model.addAttribute("product", result.getData());
+        model.addAttribute("user", user);
+        model.addAttribute("stores", userStores.getData());
         return "updateProductPage";
     }
-    @PostMapping("/update-product")
-    public String updateProduct(@ModelAttribute ProductResponseDTO dto) {
-        ProductRequestDTO updateDto = new ProductRequestDTO();
-        updateDto.setName(dto.getName());
-        updateDto.setDescription(dto.getDescription());
-        updateDto.setPrice(dto.getPrice());
-        updateDto.setImageUrl(dto.getImageUrl());
+    @PostMapping("/update-product/{id}")
+    public String updateProduct(@PathVariable("id") Long id,
+                                @RequestParam("name") String name,
+                                @RequestParam("description") String description,
+                                @RequestParam("price") Double price,
+                                @RequestParam(value = "productImage", required = false) MultipartFile productImage) {
 
-        productService.update(dto.getId(), updateDto);
+        String imageUrl = (productImage != null && !productImage.isEmpty())
+                ? imageStorageService.saveImage(productImage)
+                : null;
+
+        ProductRequestDTO dto = new ProductRequestDTO();
+        dto.setName(name);
+        dto.setDescription(description);
+        dto.setPrice(price);
+        dto.setImageUrl(imageUrl);
+
+        productService.update(id, dto);
         return "redirect:/products";
     }
+
     @PostMapping("/delete/{id}")
     public String deleteProduct(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         Result result = productService.delete(id);
