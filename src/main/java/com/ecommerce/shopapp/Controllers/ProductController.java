@@ -43,16 +43,16 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String getAllProducts(Model model, HttpServletRequest request) {
+    public String getAllProducts(@RequestParam(name = "storeId", required = false) Long storeId, Model model, HttpServletRequest request) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
         DataResult<UserRequestDTO> userResult = userService.getUserByEmail(email);
         UserRequestDTO user = userResult.getData();
         DataResult<List<StoreResponseDTO>> storeResult = storeService.getAllStoresByOwnerId(user.getId());
-        List<Long> storeIds = storeResult.getData()
-                .stream()
-                .map(StoreResponseDTO::getId)
-                .toList();
+
+        List<Long> storeIds = (storeId != null)
+                ? List.of(storeId)
+                : storeResult.getData().stream().map(StoreResponseDTO::getId).toList();
         DataResult<List<ProductResponseDTO>> result = productService.getProductsByStoreIds(storeIds);
         if (!result.isSuccess()) {
             model.addAttribute("error", result.getMessage()); // Hata mesajını göster
@@ -60,6 +60,8 @@ public class ProductController {
         model.addAttribute("currentURI", request.getRequestURI());
         model.addAttribute("user", userService.getUserByEmail(email));
         model.addAttribute("products", result.getData());
+        model.addAttribute("stores", storeResult.getData());
+        model.addAttribute("storeId", storeId);
         return "productList";
     }
 

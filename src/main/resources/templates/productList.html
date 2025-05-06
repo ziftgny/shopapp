@@ -44,7 +44,25 @@
             <!-- [ Main Content ] start -->
             <div class="row">
                 <div class="container px-5">
-                    <h2 class="mb-4 text-center">Products</h2>
+                    <div class="row align-items-center mb-4">
+
+                        <div class="col-md-4 offset-md-4 text-center">
+                            <h2 class="mb-0">Products</h2>
+                        </div>
+
+                        <div class="col-md-4 text-end">
+                            <form method="get" th:action="@{/products}" class="d-inline">
+                                <select name="storeId" class="form-select w-auto d-inline" onchange="this.form.submit()">
+                                    <option value="" th:selected="${storeId == null}">All Stores</option>
+                                    <option th:each="store : ${stores}"
+                                            th:value="${store.id}"
+                                            th:text="${store.storeName}"
+                                            th:selected="${store.id} == ${storeId}">
+                                    </option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
 
                     <div class="row" th:if="${!#lists.isEmpty(products)}">
                         <div class="col-md-4 mb-4" th:each="product : ${products}">

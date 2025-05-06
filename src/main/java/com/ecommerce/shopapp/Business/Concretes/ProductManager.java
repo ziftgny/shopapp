@@ -87,6 +87,7 @@ public class ProductManager implements ProductService {
         productRepository.save(product);
     }
 
+    // kullanıcının tüm mağaza id'lerini al, bu id'lerden ürünlere eriş
     @Override
     public DataResult<List<ProductResponseDTO>> getProductsByStoreIds(List<Long> storeIds) {
         List<Product> products = productRepository.findAllByStoreIdIn(storeIds);
