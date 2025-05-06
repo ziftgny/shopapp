@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="~{layouts/head :: head(pageTitle='Dashboard')}"></head>
 <header class="pc-header" th:fragment="header">
   <div class="header-wrapper"> <!-- [Mobile Media Block] start -->
@@ -155,9 +155,8 @@
                         type="button"
                         role="tab"
                         aria-controls="drp-tab-1"
-                        aria-selected="true"
-                ><i class="ti ti-user"></i> Profile</button
-                >
+                        aria-selected="true">
+                  <i class="ti ti-user"></i> Profile</button>
               </li>
               <li class="nav-item" role="presentation">
                 <button
@@ -168,9 +167,8 @@
                         type="button"
                         role="tab"
                         aria-controls="drp-tab-2"
-                        aria-selected="false"
-                ><i class="ti ti-settings"></i> Setting</button
-                >
+                        aria-selected="false">
+                  <i class="ti ti-settings"></i> Setting</button>
               </li>
             </ul>
             <div class="tab-content" id="mysrpTabContent">

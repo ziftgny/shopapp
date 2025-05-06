@@ -6,7 +6,9 @@ import com.ecommerce.shopapp.Core.Utils.Results.*;
 import com.ecommerce.shopapp.DTOs.Requests.ProductRequestDTO;
 import com.ecommerce.shopapp.DTOs.Responses.ProductResponseDTO;
 import com.ecommerce.shopapp.DataAccess.Abstracts.ProductRepository;
+import com.ecommerce.shopapp.DataAccess.Abstracts.StoreRepository;
 import com.ecommerce.shopapp.Entities.Concretes.Product;
+import com.ecommerce.shopapp.Entities.Concretes.Store;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,10 +18,13 @@ public class ProductManager implements ProductService {
 
     private final ProductRepository productRepository;
     private final ProductMapper productMapper;
+    private final StoreRepository storeRepository;
 
-    public ProductManager(ProductRepository productRepository, ProductMapper productMapper) {
+
+    public ProductManager(ProductRepository productRepository, ProductMapper productMapper, StoreRepository storeRepository) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
+        this.storeRepository = storeRepository;
     }
 
     @Override
@@ -70,4 +75,24 @@ public class ProductManager implements ProductService {
         productRepository.deleteById(id);
         return new SuccessResult("Ürün başarıyla silindi.");
     }
+
+    @Override
+    public void createWithStore(ProductRequestDTO dto, Long storeId) {
+        Store store = storeRepository.findById(storeId)
+                .orElseThrow(() -> new RuntimeException("Store not found"));
+
+        Product product = productMapper.toEntity(dto);
+        product.setStore(store);
+
+        productRepository.save(product);
+    }
+
+    @Override
+    public DataResult<List<ProductResponseDTO>> getProductsByStoreIds(List<Long> storeIds) {
+        List<Product> products = productRepository.findAllByStoreIdIn(storeIds);
+        List<ProductResponseDTO> dtoList = productMapper.toDtoList(products);
+        return new SuccessDataResult<>(dtoList);
+    }
+
+
 }

@@ -1,104 +1,102 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!-- [Head] start -->
-<head th:replace="~{layouts/head :: head(pageTitle='Dashboard')}"></head>
+<head th:replace="~{layouts/head :: head(pageTitle='Stores')}"></head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
 
-<body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
-<!-- [ Pre-loader ] start -->
-<div class="loader-bg">
-    <div class="loader-track">
-        <div class="loader-fill"></div>
-    </div>
-</div>
-<!-- [ Pre-loader ] End -->
-<!-- [ Sidebar Menu ] start -->
-<nav th:replace="~{layouts/nav :: nav}"></nav>
-<!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
-<header th:replace="~{layouts/header :: header}"></header>
-<!-- [ Header ] end -->
+    <body data-pc-preset="preset-1" data-pc-direction="ltr" data-pc-theme="light">
+        <!-- [ Pre-loader ] start -->
+        <div class="loader-bg">
+            <div class="loader-track">
+                <div class="loader-fill"></div>
+            </div>
+        </div>
+        <!-- [ Pre-loader ] End -->
+        <!-- [ Sidebar Menu ] start -->
+        <nav th:replace="~{layouts/nav :: nav}"></nav>
+        <!-- [ Sidebar Menu ] end --> <!-- [ Header Topbar ] start -->
+        <header th:replace="~{layouts/header :: header}"></header>
+        <!-- [ Header ] end -->
 
 
-
-<!-- [ Main Content ] start -->
-<div class="pc-container">
-    <div class="pc-content">
-        <!-- [ breadcrumb ] start -->
-        <div class="page-header">
-            <div class="page-block">
-                <div class="row align-items-center">
-                    <div class="col-md-12">
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Create a store</li>
-                        </ul>
+        <!-- [ Main Content ] start -->
+        <div class="pc-container">
+            <div class="pc-content">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0)">Dashboard</a></li>
+                                    <li class="breadcrumb-item" aria-current="page">Create a store</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+                <div class="row p-0">
+                     <div class="container">
+                         <div class="row justify-content-center">
+                             <div class="col-md-8">
+
+                                 <div class="card shadow">
+                                     <div class="card-body">
+
+                                         <h3 class="card-title mb-4 text-center">Create A New Store</h3>
+                                         <form th:action="@{/stores/create-store}" method="post" enctype="multipart/form-data">
+
+                                             <div class="mb-3">
+                                                 <label for="storeName" class="form-label">Store Name</label>
+                                                 <input type="text" class="form-control" id="storeName" name="storeName" required>
+                                             </div>
+
+                                             <div class="mb-3">
+                                                 <label for="description" class="form-label">Description</label>
+                                                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                             </div>
+
+                                             <div class="mb-3">
+                                                 <label for="bannerImage" class="form-label">Banner Image</label>
+                                                 <input type="file" class="form-control" id="bannerImage" name="bannerImage" accept="image/*" required>
+                                             </div>
+
+                                             <div class="mb-3">
+                                                 <label for="shopImage" class="form-label">Store Profile Image</label>
+                                                 <input type="file" class="form-control" id="shopImage" name="shopImage" accept="image/*" required>
+                                             </div>
+
+                                             <div class="d-grid">
+                                                 <button type="submit" class="btn btn-primary">Create Store</button>
+                                             </div>
+                                         </form>
+
+                                     </div>
+                                 </div>
+
+                             </div>
+                         </div>
+                     </div>
                 </div>
             </div>
         </div>
-        <!-- [ breadcrumb ] end -->
+        <!-- [ Main Content ] end -->
+        <footer th:replace="~{layouts/footer :: footer}"></footer>
 
-        <!-- [ Main Content ] start -->
-     <div class="row p-0">
-         <div class="container">
-             <div class="row justify-content-center">
-                 <div class="col-md-8">
-
-                     <div class="card shadow">
-                         <div class="card-body">
-                             <h3 class="card-title mb-4 text-center">Create A New Store</h3>
-
-                             <form th:action="@{/stores/create-store}" method="post" enctype="multipart/form-data">
-
-                                 <div class="mb-3">
-                                     <label for="storeName" class="form-label">Store Name</label>
-                                     <input type="text" class="form-control" id="storeName" name="storeName" required>
-                                 </div>
-
-                                 <div class="mb-3">
-                                     <label for="description" class="form-label">Description</label>
-                                     <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-                                 </div>
-
-                                 <div class="mb-3">
-                                     <label for="bannerImage" class="form-label">Banner Image</label>
-                                     <input type="file" class="form-control" id="bannerImage" name="bannerImage" accept="image/*" required>
-                                 </div>
-
-                                 <div class="mb-3">
-                                     <label for="shopImage" class="form-label">Store Profile Image</label>
-                                     <input type="file" class="form-control" id="shopImage" name="shopImage" accept="image/*" required>
-                                 </div>
-
-                                 <div class="d-grid">
-                                     <button type="submit" class="btn btn-primary">Create Store</button>
-                                 </div>
-
-                             </form>
-
-                         </div>
-                     </div>
-
-                 </div>
-             </div>
-         </div>
-     </div>
-    </div>
-</div>
-<!-- [ Main Content ] end -->
-<footer th:replace="~{layouts/footer :: footer}"></footer>
-
-<!-- [Page Specific JS] start -->
-<script src="../assets/js/plugins/apexcharts.min.js"></script>
-<script src="../assets/js/pages/dashboard-default.js"></script>
-<!-- [Page Specific JS] end -->
-<!-- Required Js -->
-<div th:replace="~{layouts/scripts :: scripts}"></div>
+        <!-- [Page Specific JS] start -->
+        <script src="../assets/js/plugins/apexcharts.min.js"></script>
+        <script src="../assets/js/pages/dashboard-default.js"></script>
+        <!-- [Page Specific JS] end -->
+        <!-- Required Js -->
+        <div th:replace="~{layouts/scripts :: scripts}"></div>
 
 
-</body>
+    </body>
 <!-- [Body] end -->
 
 </html>

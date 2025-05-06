@@ -14,4 +14,6 @@ public interface ProductService {
     DataResult<ProductResponseDTO> getById(Long id);
     Result update(Long id, ProductRequestDTO dto);
     Result delete(Long id);
+    void createWithStore(ProductRequestDTO dto, Long storeId);
+    DataResult<List<ProductResponseDTO>> getProductsByStoreIds(List<Long> storeIds);
 }

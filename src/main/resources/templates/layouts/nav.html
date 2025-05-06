@@ -45,7 +45,9 @@
                                     Products
                                 </button>
                             </h2>
-                            <div id="collapseTwo"  class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+                            <div id="collapseTwo"
+                                 th:classappend="${currentURI == '/products' or currentURI == '/create-product-page'} ? ' show'"
+                                 class="accordion-collapse collapse " data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <div class="list-group">
                                         <a th:href="@{/products}"

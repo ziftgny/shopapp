@@ -38,10 +38,10 @@ public class StoreController {
     // ✅ Tüm mağazaları listele
     @GetMapping("/show-stores-page")
     public String getAllStores(Model model, HttpServletRequest request) {
-        model.addAttribute("currentURI", request.getRequestURI()); // eklendi
+        model.addAttribute("currentURI", request.getRequestURI());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String email = auth.getName();
-        model.addAttribute("user", userService.getUserByEmail(auth.getName()));
+        model.addAttribute("user", userService.getUserByEmail(email));
         User owner = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
