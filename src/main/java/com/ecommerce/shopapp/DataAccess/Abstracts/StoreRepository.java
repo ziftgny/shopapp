@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface StoreRepository extends JpaRepository<Store, Long> {
     List<Store> findByOwnerId(Long ownerId);
-
+    Store findBySlug(String slug);
 }

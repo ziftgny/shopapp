@@ -36,6 +36,12 @@ public class StoreManager implements StoreService {
         this.userMapper = userMapper;
     }
 
+    private String createSlug(String storeName) {
+        return storeName.toLowerCase()
+                .replaceAll("[^a-z0-9\\s-]", "")
+                .replaceAll("\\s+", "-");
+    }
+
     @Override
     public DataResult<List<StoreResponseDTO>> getAllStoresByOwnerId(Long ownerId) {
         List<Store> stores = storeRepository.findByOwnerId(ownerId);
@@ -52,6 +58,7 @@ public class StoreManager implements StoreService {
         Store store = storeMapper.toEntity(dto);
         User owner = userMapper.toEntity(ownerDTO);
         store.setOwner(owner);
+        store.setSlug(createSlug(dto.getStoreName()));
         storeRepository.save(store);
 
         return new SuccessResult("Store Added Successfully");
@@ -101,4 +108,12 @@ public class StoreManager implements StoreService {
         return new SuccessResult("Store Deleted Successfully");
     }
 
+    @Override
+    public DataResult<StoreResponseDTO> getStoreBySlug(String slug) {
+        Store store = storeRepository.findBySlug(slug);
+        if (store == null) {
+            return new ErrorDataResult<>("Store Not Found");
+        }
+        return new SuccessDataResult<>(storeMapper.toDto(store));
+    }
 }

@@ -16,5 +16,6 @@ public interface StoreService {
     DataResult<StoreResponseDTO> getStoreById(Long id);
     Result updateStore(Long id, StoreRequestDTO dto);
     Result deleteStore(Long id);
+    DataResult<StoreResponseDTO> getStoreBySlug(String slug);
 }
 

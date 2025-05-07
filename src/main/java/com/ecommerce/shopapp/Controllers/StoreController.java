@@ -10,6 +10,8 @@ import com.ecommerce.shopapp.DataAccess.Abstracts.UserRepository;
 import com.ecommerce.shopapp.DTOs.Requests.StoreRequestDTO;
 import com.ecommerce.shopapp.DTOs.Responses.StoreResponseDTO;
 import com.ecommerce.shopapp.Entities.Concretes.User;
+import com.ecommerce.shopapp.Business.Abstracts.ProductService;
+import com.ecommerce.shopapp.DTOs.Responses.ProductResponseDTO;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,12 +30,14 @@ public class StoreController {
     private final StoreService storeService;
     private final ImageStorageService imageStorageService;
     private final UserRepository userRepository;
+    private final ProductService productService;
 
-    public StoreController(UserService userService, StoreService storeService, ImageStorageService imageStorageService, UserRepository userRepository) {
+    public StoreController(UserService userService, StoreService storeService, ImageStorageService imageStorageService, UserRepository userRepository, ProductService productService) {
         this.userService = userService;
         this.storeService = storeService;
         this.imageStorageService = imageStorageService;
         this.userRepository = userRepository;
+        this.productService = productService;
     }
 
     // ✅ Tüm mağazaları listele
@@ -132,5 +136,22 @@ public class StoreController {
         redirectAttributes.addFlashAttribute("success", result.isSuccess());
 
         return "redirect:/stores/show-stores-page";
+    }
+
+    // Public store products page
+    @GetMapping("/{storeSlug}/products")
+    public String getStoreProducts(@PathVariable String storeSlug, Model model) {
+        DataResult<StoreResponseDTO> storeResult = storeService.getStoreBySlug(storeSlug);
+        if (!storeResult.isSuccess()) {
+            return "error/404";
+        }
+
+        StoreResponseDTO store = storeResult.getData();
+        List<Long> storeIds = List.of(store.getId());
+        DataResult<List<ProductResponseDTO>> productsResult = productService.getProductsByStoreIds(storeIds);
+
+        model.addAttribute("store", store);
+        model.addAttribute("products", productsResult.getData());
+        return "public/storeProducts";
     }
 }
