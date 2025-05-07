@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mağaza Detayı</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body style="background: #f8f9fa;">
+    <div class="container px-5 mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card h-100 shadow position-relative">
+                    <div th:if="${error}">
+                        <p th:text="${error}" style="color:red;"></p>
+                    </div>
+                    <div th:if="${store}">
+                        <!-- Banner -->
+                        <img th:src="@{'/uploads/' + ${store.bannerImageUrl}}" class="card-img-top" alt="Mağaza Banner" style="height: 200px; object-fit: cover;">
+                        <!-- Profil Fotoğrafı (Overlapping) -->
+                        <div style="position: absolute; top: 130px; left: 50%; transform: translateX(-50%); z-index: 10;">
+                            <img th:src="@{'/uploads/' + ${store.shopImageUrl}}" alt="Mağaza Görseli" class="rounded-circle shadow" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid white;">
+                        </div>
+                        <div class="card-body text-center mt-5 pt-4">
+                            <h2 class="card-title mb-2" th:text="${store.storeName}"></h2>
+                            <p class="card-text text-muted mb-3" th:text="${store.description}"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ürünler Alanı -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-10">
+                <h3 class="mb-4 text-center">Ürünler</h3>
+                <div th:if="${#lists.isEmpty(products)}" class="alert alert-warning text-center">
+                    Bu mağazaya ait ürün bulunmamaktadır.
+                </div>
+                <div class="row" th:if="${!#lists.isEmpty(products)}">
+                    <div class="col-md-4 mb-4" th:each="product : ${products}">
+                        <div class="card h-100 shadow">
+                            <img th:src="@{'/uploads/' + ${product.imageUrl}}" class="card-img-top" alt="Ürün Görseli" style="height: 180px; object-fit: cover;">
+                            <div class="card-body text-center">
+                                <h5 class="card-title" th:text="${product.name}"></h5>
+                                <p class="card-text text-muted" th:text="${product.description}"></p>
+                                <p class="fw-bold" th:text="${product.price} + ' ₺'"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
