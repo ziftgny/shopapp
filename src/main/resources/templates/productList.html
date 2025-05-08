@@ -29,8 +29,8 @@
                         <div class="row align-items-center">
                             <div class="col-md-12 mb-3">
                                 <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript: void(0)">Products</a></li>
+                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="/products">Products</a></li>
                                     <li class="breadcrumb-item" aria-current="page">All Products</li>
                                 </ul>
                             </div>
@@ -66,7 +66,7 @@
 
                     <div class="row" th:if="${!#lists.isEmpty(products)}">
                         <div class="col-md-4 mb-4" th:each="product : ${products}">
-                            <div class="card h-100 shadow position-relative">
+                            <div class="card h-100 shadow position-relative card-hover-lift">
 
                                 <img th:src="@{/{path}(path=${product.getImageUrl()})}"
                                      class="card-img-top" alt="Mağaza Banner"
@@ -99,7 +99,7 @@
                     </div>
 
                     <div th:if="${#lists.isEmpty(products)}" class="alert alert-warning text-center">
-                        Henüz hiçbir ürün yok. Hadi bir tane oluşturun!
+                        You don't have a product yet. Let's create one!
                     </div>
 
                 </div>

@@ -30,8 +30,8 @@
           <div class="row align-items-center">
             <div class="col-md-12 mb-3">
               <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="javascript: void(0)">Stores</a></li>
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/stores/show-stores-page">Stores</a></li>
                 <li class="breadcrumb-item" aria-current="page">All Stores</li>
               </ul>
             </div>
@@ -44,15 +44,15 @@
       <!-- [ Main Content ] start -->
       <div class="row">
         <div class="container px-5">
-          <h2 class="mb-4 text-center">Mağazalarım</h2>
+          <h2 class="mb-4 text-center">Stores</h2>
 
           <div th:if="${#lists.isEmpty(stores)}" class="alert alert-warning text-center">
-            Henüz bir mağazanız yok. Hadi bir tane oluşturun!
+            You don't have a store yet. Let's create one!
           </div>
 
           <div class="row" th:if="${!#lists.isEmpty(stores)}">
             <div class="col-md-4 mb-4" th:each="store : ${stores}">
-              <div class="card h-100 shadow position-relative">
+              <div class="card h-100 shadow position-relative card-hover-lift">
                 <!-- Banner -->
                 <img th:src="@{/{path}(path=${store.getBannerImageUrl()})}"
                      class="card-img-top" alt="Mağaza Banner"
@@ -73,7 +73,7 @@
 
                 <div class="card-footer d-flex align-items-center justify-content-between">
 
-                  <div class="text-dark fw-semibold" style="font-size: 0.95rem;">
+                  <div class="text-dark fw-semibold" style="font-size: 0.75rem;">
                     <span class="text-muted" th:text="'Created At : ' + ${#temporals.format(store.createdAt, 'dd.MM.yyyy')}"></span>
                   </div>
 
