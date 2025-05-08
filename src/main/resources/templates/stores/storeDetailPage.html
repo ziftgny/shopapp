@@ -44,6 +44,10 @@
                                 <h5 class="card-title" th:text="${product.name}"></h5>
                                 <p class="card-text text-muted" th:text="${product.description}"></p>
                                 <p class="fw-bold" th:text="${product.price} + ' ₺'"></p>
+                                <form th:action="@{/cart/add}" method="post">
+                                    <input type="hidden" name="productId" th:value="${product.id}" />
+                                    <button type="submit" class="btn btn-success">Sepete Ekle</button>
+                                </form>
                             </div>
                         </div>
                     </div>

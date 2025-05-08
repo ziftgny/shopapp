@@ -68,7 +68,7 @@
 
                 <div class="card-body text-center mt-5 pt-4">
                   <h5 class="card-title">
-                    <a th:href="@{'/' + ${store.getStoreName()}}" th:text="${store.getStoreName()}" style="text-decoration: underline; color: #007bff; cursor: pointer;">Store Name</a>
+                    <a th:href="@{'/shop/' + ${store.slug}}" th:text="${store.getStoreName()}" style="text-decoration: underline; color: #007bff; cursor: pointer;">Store Name</a>
                   </h5>
                   <p class="card-text text-muted" th:text="${store.getDescription()}">Description</p>
                 </div>

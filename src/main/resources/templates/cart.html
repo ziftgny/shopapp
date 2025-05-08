@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sepetim</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body style="background: #f8f9fa;">
+    <div class="container px-5 mt-5">
+        <h2 class="mb-4 text-center">Sepetim</h2>
+        <div th:if="${#lists.isEmpty(cart)}" class="alert alert-warning text-center">
+            Sepetinizde ürün yok.
+        </div>
+        <div class="row" th:if="${!#lists.isEmpty(cart)}">
+            <div class="col-md-8 offset-md-2">
+                <table class="table table-bordered bg-white">
+                    <thead>
+                        <tr>
+                            <th>Görsel</th>
+                            <th>Ürün Adı</th>
+                            <th>Açıklama</th>
+                            <th>Fiyat</th>
+                            <th>İşlem</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="product : ${cart}">
+                            <td><img th:src="@{'/uploads/' + ${product.imageUrl}}" alt="Görsel" style="width: 80px;"></td>
+                            <td th:text="${product.name}"></td>
+                            <td th:text="${product.description}"></td>
+                            <td th:text="${product.price} + ' ₺'"></td>
+                            <td>
+                                <form th:action="@{/cart/remove}" method="post" style="display:inline;">
+                                    <input type="hidden" name="productId" th:value="${product.id}" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Kaldır</button>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a th:if="${session.lastStoreSlug != null}" th:href="@{'/shop/' + ${session.lastStoreSlug}}" class="btn btn-primary">Alışverişe Devam Et</a>
+            <a th:if="${session.lastStoreSlug == null}" href="/" class="btn btn-primary">Alışverişe Devam Et</a>
+        </div>
+    </div>
+</body>
+</html> 
