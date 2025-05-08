@@ -71,6 +71,11 @@
                                                  <input type="file" class="form-control" id="shopImage" name="shopImage" accept="image/*" required>
                                              </div>
 
+                                             <div class="mb-3">
+                                                 <label for="storeSlug" class="form-label">Mağaza Adresi (slug)</label>
+                                                 <input type="text" class="form-control" id="storeSlug" name="storeSlug" required pattern="[a-zA-Z0-9_-]+" title="Sadece harf, rakam, tire ve alt çizgi kullanılabilir.">
+                                             </div>
+
                                              <div class="d-grid">
                                                  <button type="submit" class="btn btn-primary">Create Store</button>
                                              </div>

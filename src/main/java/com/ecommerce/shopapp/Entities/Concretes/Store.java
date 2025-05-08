@@ -23,6 +23,8 @@ public class Store extends BaseEntity {
     private User owner;
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Product> products = new ArrayList<>();
+    @Column(unique = true, nullable = false)
+    private String slug;
 
     // === GETTER & SETTER ===
 
@@ -88,5 +90,13 @@ public class Store extends BaseEntity {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

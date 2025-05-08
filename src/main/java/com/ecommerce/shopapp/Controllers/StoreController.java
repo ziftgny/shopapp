@@ -76,7 +76,8 @@ public class StoreController {
     public String createStore(@RequestParam("storeName") String storeName,
                            @RequestParam("description") String description,
                            @RequestParam("bannerImage") MultipartFile bannerImage,
-                           @RequestParam("shopImage") MultipartFile shopImage) {
+                           @RequestParam("shopImage") MultipartFile shopImage,
+                           @RequestParam("storeSlug") String storeSlug) {
 
         // Giriş yapan kullanıcıyı al
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -89,10 +90,11 @@ public class StoreController {
         String bannerUrl = imageStorageService.saveImage(bannerImage);
         String shopUrl = imageStorageService.saveImage(shopImage);
 
-        StoreRequestDTO dto = new StoreRequestDTO(storeName, description, bannerUrl, shopUrl, owner.getId());
+        StoreRequestDTO dto = new StoreRequestDTO(storeName, description, bannerUrl, shopUrl, owner.getId(), storeSlug);
         storeService.createStore(dto);
 
-        return "redirect:/stores/show-stores-page";
+        // Mağaza detayına yönlendir
+        return "redirect:/shop/" + storeSlug;
     }
 
     // ✅ Güncelleme formu
@@ -121,7 +123,7 @@ public class StoreController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserRequestDTO user = userService.getUserByEmail(auth.getName()).getData();
         Long ownerid = user.getId();
-        StoreRequestDTO dto = new StoreRequestDTO(storeName, description, bannerUrl, shopUrl, ownerid);
+        StoreRequestDTO dto = new StoreRequestDTO(storeName, description, bannerUrl, shopUrl, ownerid, shopUrl);
         storeService.updateStore(id, dto);
 
         return "redirect:/stores/show-stores-page";
