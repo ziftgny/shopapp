@@ -90,7 +90,7 @@ public class StoreController {
         storeService.createStore(dto);
 
         // Mağaza detayına yönlendir
-        return "redirect:/" + storeSlug;
+        return "redirect:/shop/" + storeSlug;
     }
 
     // ✅ Güncelleme formu
