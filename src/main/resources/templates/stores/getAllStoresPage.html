@@ -80,7 +80,9 @@
                   </div>
 
                   <div class="d-flex">
-                    <a th:href="@{/stores/{slug}/products(slug=${store.getSlug()})}" class="btn btn-sm btn-primary me-3">Go to</a>
+                    <a th:href="@{/stores/{slug}/products(slug=${store.getSlug()})}" class="btn btn-sm btn-outline-dark btnSize me-3">
+                      Go to
+                    </a>
                     <form th:action="@{/stores/update-store-page/{id}(id=${store.getId()})}" method="get" class="me-3">
                       <button type="submit" class="btn btn-sm btn-outline-primary btnSize">Update</button>
                     </form>

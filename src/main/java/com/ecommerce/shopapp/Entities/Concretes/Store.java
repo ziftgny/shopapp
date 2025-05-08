@@ -17,7 +17,6 @@ public class Store extends BaseEntity {
     private String description;
     private String bannerImageUrl;
     private String shopImageUrl;
-    private String slug;
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private User owner;
@@ -27,14 +26,6 @@ public class Store extends BaseEntity {
     private String slug;
 
     // === GETTER & SETTER ===
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
 
     public String getBannerImageUrl() {
         return bannerImageUrl;
