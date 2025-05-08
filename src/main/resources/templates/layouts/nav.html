@@ -62,25 +62,8 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Accordion Item #3
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </li>
-
-
-
-
 
 
                 <li class="pc-item pc-caption">
@@ -93,31 +76,31 @@
                 </li>
                 <li class="pc-item">
                     <a href="../elements/bc_typography.html" class="pc-link">
-            <span class="pc-micon">
-              <svg class="pc-icon">
-                <use xlink:href="#font-size"></use>
-              </svg>
-            </span>
+                        <span class="pc-micon">
+                          <svg class="pc-icon">
+                            <use xlink:href="#font-size"></use>
+                          </svg>
+                        </span>
                         <span class="pc-mtext">Typography</span>
                     </a>
                 </li>
                 <li class="pc-item">
                     <a href="../elements/bc_color.html" class="pc-link">
-            <span class="pc-micon">
-              <svg class="pc-icon">
-                <use xlink:href="#bg-colors"></use>
-              </svg>
-            </span>
+                        <span class="pc-micon">
+                          <svg class="pc-icon">
+                            <use xlink:href="#bg-colors"></use>
+                          </svg>
+                        </span>
                         <span class="pc-mtext">Color</span>
                     </a>
                 </li>
                 <li class="pc-item">
                     <a href="../elements/icon-tabler.html" class="pc-link">
-            <span class="pc-micon">
-              <svg class="pc-icon">
-                <use xlink:href="#highlight"></use>
-              </svg>
-            </span>
+                        <span class="pc-micon">
+                          <svg class="pc-icon">
+                            <use xlink:href="#highlight"></use>
+                          </svg>
+                        </span>
                         <span class="pc-mtext">Icons</span>
                     </a>
                 </li>
@@ -131,24 +114,35 @@
                 </li>
                 <li class="pc-item">
                     <a th:href="@{/auth/login-user-page}" class="pc-link">
-            <span class="pc-micon">
-              <svg class="pc-icon">
-                <use xlink:href="#lock"></use>
-              </svg>
-            </span>
+                        <span class="pc-micon">
+                          <svg class="pc-icon">
+                            <use xlink:href="#lock"></use>
+                          </svg>
+                        </span>
                         <span class="pc-mtext">Login</span>
                     </a>
                 </li>
                 <li class="pc-item">
                     <a th:href="@{/auth/register-user-page}" class="pc-link">
-            <span class="pc-micon">
-              <svg class="pc-icon">
-                <use xlink:href="#user-add"></use>
-              </svg>
-            </span>
+                        <span class="pc-micon">
+                          <svg class="pc-icon">
+                            <use xlink:href="#user-add"></use>
+                          </svg>
+                        </span>
                         <span class="pc-mtext">Register</span>
                     </a>
                 </li>
+                <li class="pc-item">
+                    <a th:href="@{/}" class="pc-link">
+                        <span class="pc-micon">
+                            <svg class="pc-icon">
+                                <use xlink:href="#dashboard"></use> <!-- Buraya uygun bir ikon ekleniyor -->
+                            </svg>
+                        </span>
+                        <span class="pc-mtext">Dashboard</span>
+                    </a>
+                </li>
+
                 <li class="pc-item pc-caption">
                     <label data-i18n="Widget">Other</label>
                     <i class="pc-micon">
@@ -160,11 +154,11 @@
 
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
-            <span class="pc-micon">
-              <svg class="pc-icon">
-                <use xlink:href="#swap"></use>
-              </svg>
-            </span>
+                        <span class="pc-micon">
+                          <svg class="pc-icon">
+                            <use xlink:href="#swap"></use>
+                          </svg>
+                        </span>
                         <span class="pc-mtext" data-i18n="Menu levels">Menu levels</span>
                         <span class="pc-arrow"><i data-feather="chevron-right"></i></span>
                     </a>

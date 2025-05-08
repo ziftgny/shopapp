@@ -93,8 +93,7 @@ public class StoreController {
         StoreRequestDTO dto = new StoreRequestDTO(storeName, description, bannerUrl, shopUrl, owner.getId(), storeSlug);
         storeService.createStore(dto);
 
-        // Mağaza detayına yönlendir
-        return "redirect:/shop/" + storeSlug;
+        return "redirect:/stores/show-stores-page";
     }
 
     // ✅ Güncelleme formu
