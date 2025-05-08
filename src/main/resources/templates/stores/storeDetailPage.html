@@ -16,10 +16,10 @@
                     </div>
                     <div th:if="${store}">
                         <!-- Banner -->
-                        <img th:src="@{/{path}(path=${store.bannerImageUrl})}" class="card-img-top" alt="Mağaza Banner" style="height: 200px; object-fit: cover;">
+                        <img th:src="@{'/uploads/' + ${store.bannerImageUrl}}" class="card-img-top" alt="Mağaza Banner" style="height: 200px; object-fit: cover;">
                         <!-- Profil Fotoğrafı (Overlapping) -->
                         <div style="position: absolute; top: 130px; left: 50%; transform: translateX(-50%); z-index: 10;">
-                            <img th:src="@{/{path}(path=${store.shopImageUrl})}" alt="Mağaza Görseli" class="rounded-circle shadow" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid white;">
+                            <img th:src="@{'/uploads/' + ${store.shopImageUrl}}" alt="Mağaza Görseli" class="rounded-circle shadow" style="width: 100px; height: 100px; object-fit: cover; border: 3px solid white;">
                         </div>
                         <div class="card-body text-center mt-5 pt-4">
                             <h2 class="card-title mb-2" th:text="${store.storeName}"></h2>
@@ -39,7 +39,7 @@
                 <div class="row" th:if="${!#lists.isEmpty(products)}">
                     <div class="col-md-4 mb-4" th:each="product : ${products}">
                         <div class="card h-100 shadow">
-                            <img th:src="@{/{path}(path=${product.imageUrl})}" class="card-img-top" alt="Ürün Görseli" style="height: 180px; object-fit: cover;">
+                            <img th:src="@{'/uploads/' + ${product.imageUrl}}" class="card-img-top" alt="Ürün Görseli" style="height: 180px; object-fit: cover;">
                             <div class="card-body text-center">
                                 <h5 class="card-title" th:text="${product.name}"></h5>
                                 <p class="card-text text-muted" th:text="${product.description}"></p>

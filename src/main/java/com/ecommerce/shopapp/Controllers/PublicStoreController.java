@@ -19,7 +19,7 @@ public class PublicStoreController {
         this.productService = productService;
     }
 
-    @GetMapping("/{slug:[a-zA-Z0-9_-]+}")
+    @GetMapping("/shop/{slug:[a-zA-Z0-9_-]+}")
     public String getStoreBySlug(@PathVariable String slug, Model model) {
         DataResult<StoreResponseDTO> result = storeService.getStoreBySlug(slug);
         if (!result.isSuccess()) {

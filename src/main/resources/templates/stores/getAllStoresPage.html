@@ -54,13 +54,13 @@
             <div class="col-md-4 mb-4" th:each="store : ${stores}">
               <div class="card h-100 shadow position-relative">
                 <!-- Banner -->
-                <img th:src="@{/{path}(path=${store.getBannerImageUrl()})}"
+                <img th:src="@{'/uploads/' + ${store.getBannerImageUrl()}}"
                      class="card-img-top" alt="Mağaza Banner"
                      style="height: 200px; object-fit: cover;">
 
                 <!-- Profile Image (Overlapping) -->
                 <div style="position: absolute; top: 130px; left: 50%; transform: translateX(-50%); z-index: 10;">
-                  <img th:src="@{/{path}(path=${store.getShopImageUrl()})}"
+                  <img th:src="@{'/uploads/' + ${store.getShopImageUrl()}}"
                        alt="Profil Fotoğrafı"
                        class="rounded-circle shadow"
                        style="width: 100px; height: 100px; object-fit: cover; border: 3px solid white;">
