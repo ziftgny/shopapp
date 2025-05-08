@@ -11,17 +11,19 @@ public class StoreResponseDTO {
     private String shopImageUrl;
     private String ownerEmail;
     private LocalDateTime createdAt;
+    private String slug;
 
     public StoreResponseDTO() {
     }
 
-    public StoreResponseDTO(Long id, String storeName, String description, String bannerImageUrl, String shopImageUrl, String ownerEmail) {
+    public StoreResponseDTO(Long id, String storeName, String description, String bannerImageUrl, String shopImageUrl, String ownerEmail, String slug) {
         this.id = id;
         this.storeName = storeName;
         this.description = description;
         this.bannerImageUrl = bannerImageUrl;
         this.shopImageUrl = shopImageUrl;
         this.ownerEmail = ownerEmail;
+        this.slug = slug;
     }
 
     public String getStoreName() {
@@ -79,6 +81,14 @@ public class StoreResponseDTO {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }
 

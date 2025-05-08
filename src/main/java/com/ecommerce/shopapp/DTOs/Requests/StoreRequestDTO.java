@@ -7,16 +7,18 @@ public class StoreRequestDTO {
     private String bannerImageUrl;
     private String shopImageUrl;
     private Long ownerId;
+    private String slug;
 
     public StoreRequestDTO() {
     }
 
-    public StoreRequestDTO(String storeName, String description, String bannerImageUrl, String shopImageUrl, Long ownerId) {
+    public StoreRequestDTO(String storeName, String description, String bannerImageUrl, String shopImageUrl, Long ownerId, String slug) {
         this.storeName = storeName;
         this.description = description;
         this.bannerImageUrl = bannerImageUrl;
         this.shopImageUrl = shopImageUrl;
         this.ownerId = ownerId;
+        this.slug = slug;
     }
 
     public String getStoreName() {
@@ -57,6 +59,14 @@ public class StoreRequestDTO {
 
     public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }
 

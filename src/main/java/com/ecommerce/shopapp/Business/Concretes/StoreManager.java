@@ -101,4 +101,22 @@ public class StoreManager implements StoreService {
         return new SuccessResult("Store Deleted Successfully");
     }
 
+    @Override
+    public DataResult<StoreResponseDTO> getStoreByName(String storeName) {
+        Store store = storeRepository.findByStoreName(storeName);
+        if (store == null) {
+            return new ErrorDataResult<>("Store Not Found");
+        }
+        return new SuccessDataResult<>(storeMapper.toDto(store));
+    }
+
+    @Override
+    public DataResult<StoreResponseDTO> getStoreBySlug(String slug) {
+        Store store = storeRepository.findBySlug(slug);
+        if (store == null) {
+            return new ErrorDataResult<>("Store Not Found");
+        }
+        return new SuccessDataResult<>(storeMapper.toDto(store));
+    }
+
 }

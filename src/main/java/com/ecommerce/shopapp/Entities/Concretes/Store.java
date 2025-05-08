@@ -17,13 +17,24 @@ public class Store extends BaseEntity {
     private String description;
     private String bannerImageUrl;
     private String shopImageUrl;
+    private String slug;
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private User owner;
     @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
     private List<Product> products = new ArrayList<>();
+    @Column(unique = true, nullable = false)
+    private String slug;
 
     // === GETTER & SETTER ===
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
 
     public String getBannerImageUrl() {
         return bannerImageUrl;
@@ -79,5 +90,13 @@ public class Store extends BaseEntity {
 
     public void setOwner(User owner) {
         this.owner = owner;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

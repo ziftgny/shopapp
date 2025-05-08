@@ -12,10 +12,12 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface StoreMapper {
+    @Mapping(source = "slug", target = "slug")
     Store toEntity(StoreRequestDTO dto);
 
     List<StoreResponseDTO> toDtoList(List<Store> entities);
 
     @Mapping(source = "createdAt", target = "createdAt")
+    @Mapping(source = "slug", target = "slug")
     StoreResponseDTO toDto(Store entity);
 }
