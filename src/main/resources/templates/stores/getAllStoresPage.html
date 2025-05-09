@@ -73,17 +73,15 @@
                   <p class="card-text text-muted" th:text="${store.getDescription()}">Description</p>
                 </div>
 
-                <div class="card-footer d-flex align-items-center justify-content-between">
+                <div class="card-footer ">
 
-                  <div class="text-dark fw-semibold" style="font-size: 0.75rem;">
-                    <span class="text-muted" th:text="'Created At : ' + ${#temporals.format(store.createdAt, 'dd.MM.yyyy')}"></span>
-                  </div>
 
-                  <div class="d-flex">
-                    <a th:href="@{/stores/{slug}/products(slug=${store.getSlug()})}" class="btn btn-sm btn-outline-dark btnSize me-3">
+
+                  <div class="d-flex justify-content-evenly">
+                    <a th:href="@{/stores/{slug}/products(slug=${store.getSlug()})}" class="btn btn-sm btn-outline-dark btnSize">
                       Go to
                     </a>
-                    <form th:action="@{/stores/update-store-page/{id}(id=${store.getId()})}" method="get" class="me-3">
+                    <form th:action="@{/stores/update-store-page/{id}(id=${store.getId()})}" method="get">
                       <button type="submit" class="btn btn-sm btn-outline-primary btnSize">Update</button>
                     </form>
                     <form th:action="@{/stores/delete/{id}(id=${store.getId()})}" method="post">
