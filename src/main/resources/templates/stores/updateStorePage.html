@@ -76,6 +76,11 @@
                                     <img th:src="@{'/uploads/' + ${store.getShopImageUrl()}}" class="img-fluid mb-2" alt="Shop">
                                     <input type="file" class="form-control" id="shopImage" name="shopImage" accept="image/*">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="slug" class="form-label">Mağaza Adresi (slug)</label>
+                                    <input type="text" class="form-control" id="slug" name="slug"
+                                           th:value="${store.getSlug()}" required pattern="[a-zA-Z0-9_-]+" title="Sadece harf, rakam, tire ve alt çizgi kullanılabilir.">
+                                </div>
 
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-warning">Update Store</button>

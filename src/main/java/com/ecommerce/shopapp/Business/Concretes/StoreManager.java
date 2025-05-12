@@ -86,6 +86,7 @@ public class StoreManager implements StoreService {
         }
         store.setStoreName(dto.getStoreName());
         store.setDescription(dto.getDescription());
+        store.setSlug(dto.getSlug());
         storeRepository.save(store);
 
         return new SuccessResult("Store Updated Successfully");

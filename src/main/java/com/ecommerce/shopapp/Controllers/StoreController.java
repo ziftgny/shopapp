@@ -116,13 +116,14 @@ public class StoreController {
                               @RequestParam("storeName") String storeName,
                               @RequestParam("description") String description,
                               @RequestParam(value = "bannerImage", required = false) MultipartFile bannerImage,
-                              @RequestParam(value = "shopImage", required = false) MultipartFile shopImage) {
+                              @RequestParam(value = "shopImage", required = false) MultipartFile shopImage,
+                              @RequestParam("slug") String slug) {
         String bannerUrl = (bannerImage != null && !bannerImage.isEmpty()) ? imageStorageService.saveImage(bannerImage) : null;
         String shopUrl = (shopImage != null && !shopImage.isEmpty()) ? imageStorageService.saveImage(shopImage) : null;
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserRequestDTO user = userService.getUserByEmail(auth.getName()).getData();
         Long ownerid = user.getId();
-        StoreRequestDTO dto = new StoreRequestDTO(storeName, description, bannerUrl, shopUrl, ownerid, shopUrl);
+        StoreRequestDTO dto = new StoreRequestDTO(storeName, description, bannerUrl, shopUrl, ownerid, slug);
         storeService.updateStore(id, dto);
 
         return "redirect:/stores/show-stores-page";
