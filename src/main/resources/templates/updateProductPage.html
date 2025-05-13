@@ -77,7 +77,7 @@
                     <div class="mb-3">
                       <label for="productImage" class="form-label">Current Image</label>
                       <img th:src="@{/{path}( path = ${product.getImageUrl()})}" class="img-fluid mb-2" alt="product image">
-                      <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*">
+                      <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" required>
                     </div>
 
                     <div class="d-grid">
@@ -101,6 +101,7 @@
   <!-- [Page Specific JS] start -->
   <script src="../assets/js/plugins/apexcharts.min.js"></script>
   <script src="../assets/js/pages/dashboard-default.js"></script>
+  <script src="../assets/js/custom.js"></script>
   <!-- [Page Specific JS] end -->
 
   <!-- Required Js -->

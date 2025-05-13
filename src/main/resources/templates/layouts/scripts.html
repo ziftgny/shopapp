@@ -42,8 +42,8 @@
             const toastText = document.getElementById('toastText');
 
             toastText.textContent = message;
-            toast.classList.remove('bg-success', 'bg-danger');
-            toast.classList.add(success ? 'bg-success' : 'bg-danger');
+            toast.classList.remove('bg-success', 'bg-danger', 'bg-soft-success', 'bg-soft-danger');
+            toast.classList.add(success ? 'bg-soft-success' : 'bg-soft-danger');
 
             toast.style.display = 'block';
 

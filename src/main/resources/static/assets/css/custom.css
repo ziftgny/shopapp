@@ -17,3 +17,45 @@
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
+#toastMessage {
+        display: none;
+        min-width: 250px;
+        max-width: 400px;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 60px;
+        right: 70px;
+        z-index: 9999;
+        transition: all 0.3s ease;
+    }
+
+.bg-soft-success {
+    background-color: #00E676; /* Açık yeşil */
+    color: #0f5132; /* Koyu yeşil yazı */
+}
+
+.bg-soft-danger {
+    background-color: #f8d7da; /* Açık kırmızı */
+    color: #842029; /* Koyu kırmızı yazı */
+}
+
+.animated-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80);
+    background-size: 600% 600%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}

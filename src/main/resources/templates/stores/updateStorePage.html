@@ -68,13 +68,13 @@
                                 <div class="mb-3">
                                     <label class="form-label">Current Banner Image</label>
                                     <img th:src="@{'/uploads/' + ${store.getBannerImageUrl()}}" class="img-fluid mb-2" alt="Banner">
-                                    <input type="file" class="form-control" id="bannerImage" name="bannerImage" accept="image/*">
+                                    <input type="file" class="form-control" id="bannerImage" name="bannerImage" accept="image/*" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label">Current Store Image</label>
                                     <img th:src="@{'/uploads/' + ${store.getShopImageUrl()}}" class="img-fluid mb-2" alt="Shop">
-                                    <input type="file" class="form-control" id="shopImage" name="shopImage" accept="image/*">
+                                    <input type="file" class="form-control" id="shopImage" name="shopImage" accept="image/*" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="slug" class="form-label">Mağaza Adresi (slug)</label>
@@ -102,6 +102,7 @@
 <!-- [Page Specific JS] start -->
 <script src="../assets/js/plugins/apexcharts.min.js"></script>
 <script src="../assets/js/pages/dashboard-default.js"></script>
+<script src="../assets/js/custom.js"></script>
 <!-- [Page Specific JS] end -->
 <!-- Required Js -->
 <div th:replace="~{layouts/scripts :: scripts}"></div>

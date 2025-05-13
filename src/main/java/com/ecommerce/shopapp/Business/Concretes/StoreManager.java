@@ -44,7 +44,7 @@ public class StoreManager implements StoreService {
 
     @Override
     public Result createStore(StoreRequestDTO dto) {
-        UserRequestDTO ownerDTO = userService.getUserById(dto.getOwnerId()).getData();
+        UserRequestDTO ownerDTO = userService.getUserById(dto.getOwnerId()).getData(); // response olmalı!!!
         if (ownerDTO == null) {
             return new ErrorResult("Owner Not Found");
         }
