@@ -77,7 +77,7 @@
                     <div class="mb-3">
                       <label for="productImage" class="form-label">Current Image</label>
                       <img th:src="@{/{path}( path = ${product.getImageUrl()})}" class="img-fluid mb-2" alt="product image">
-                      <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*">
+                      <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" required>
                     </div>
 
                     <div class="d-grid">
