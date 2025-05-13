@@ -17,3 +17,29 @@
   transform: translateY(-10px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
+
+#toastMessage {
+        display: none;
+        min-width: 250px;
+        max-width: 400px;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 500;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        top: 60px;
+        right: 70px;
+        z-index: 9999;
+        transition: all 0.3s ease;
+    }
+
+.bg-soft-success {
+    background-color: #00E676; /* Açık yeşil */
+    color: #0f5132; /* Koyu yeşil yazı */
+}
+
+.bg-soft-danger {
+    background-color: #f8d7da; /* Açık kırmızı */
+    color: #842029; /* Koyu kırmızı yazı */
+}
